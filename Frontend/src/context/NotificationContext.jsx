@@ -19,9 +19,9 @@ export function NotificationProvider({ children }) {
       return;
     }
 
-    const socket = io("http://localhost:3000", {
-      auth: { token: localStorage.getItem("token") },
-    });
+    const socket = io(import.meta.env.VITE_API_URL || "http://localhost:3000", {
+  auth: { token: localStorage.getItem("token") },
+});
 
     socket.on("orderStatusUpdated", (data) => {
       const notification = {
